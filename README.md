@@ -62,5 +62,7 @@ James LeDoux
 Drew Hoo   
 Aniket Saoji  
 
-Blog post: [http://jamesrledoux.com](http://jamesrledoux.com/projects/2016/11/01/gutenberg-recommender-system.html)
+Blog post: [on James R LeDoux.com](http://jamesrledoux.com/projects/2016/11/01/gutenberg-recommender-system.html)
+[backup on evernote](https://is.gd/rDGwSD)
+
 
