@@ -1,4 +1,4 @@
-# Dataset Description
+# Dataset Description (results of preprocessing.py and TFIDF.py)
 
 This folder has two data sets. The two differences between the data sets are that one has more observations than the other (~23,000 vs. ~43,000 rows), and that the smaller dataset includes cluster IDs based on k-means models run on the books' vectors of TF-IDF scores. Besides these two differences, the datasets' other features are identical to one another. 
 
