@@ -20,12 +20,15 @@ TODO: STORE SENTIMENT INFO IN A WAY THAT ALLOWS US TO CREATE RUNNING SENTIMENT G
 
 """
 startTime = datetime.now()
+txt_path = '/mnt/nfsMountPoint/datasets/gutenberg_data/Gutenberg_2G_3k/txt'
+output_path = '/mnt/nfsMountPoint/datasets/gutenberg_data/preprocess_output_POS_3k.txt'
+
 #need this or else it throws encoding/decoding errors
 reload(sys)
 sys.setdefaultencoding('utf8')
 punct = set(['!', '#', '"', '%', '$', '&', '(', '+', '*', '-', ',', '/', '.', ';', ':', '=', '<', '?', '>', '@', '[', ']', '_', '^', '`', '{', '~'])
 table = string.maketrans("","")
-target = open("output_POS.txt", 'w')
+target = open(output_path, 'w')
 
 #check avg sent size
 target.write("book_name|total_words|avg_sentence_size|!|#|''|%|$|&|(|+|*|-|,|/|.|;|:|=|<|?|>|@|[|]|_|^|`|{|~|neg|neu|pos|compound|ID|Title|Author|CC|CD|DT|EX|FW|IN|JJ|JJR|JJS|LS|MD|NN|NNP|NNPS|NNS|PDT|PRP|PRP$|RB|RBR|RBS|RP|VB|VBD|VBG|VBP|VBN|WDT|VBZ|WRB|WP$|WP|")
@@ -154,10 +157,10 @@ def preprocessing():
     save global word dict after finished looping through docs
     '''
     counter = 0
-    for book in os.listdir("/Users/jamesledoux/Documents/Drew"):
+    for book in os.listdir(txt_path):
         if not book.startswith('.'):    #pass hidden files such as .DS_STORE
             book = str(book)
-            with open("/Users/jamesledoux/Documents/Drew/" + book, 'rb') as f:
+            with open(txt_path + '/' + book, 'rb') as f:
                 content = f.read().rstrip('\n')
             target.write(book + "|")
             punctAndWordsInSentence(content)
@@ -174,7 +177,7 @@ def preprocessing():
             f.close()
             counter += 1
             if counter%20 == 0:
-                print "book " + str(counter) + " done: " + book
+                print str(counter) + " books done. last:" + book
 
 preprocessing()
 print datetime.now() - startTime

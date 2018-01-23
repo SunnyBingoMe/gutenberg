@@ -9,24 +9,24 @@ from sklearn.preprocessing import MinMaxScaler
 import time
 
 # change this to your own path
-data = pd.read_csv("/Users/drewhoo/Desktop/all-data.csv")
+data = pd.read_csv("/mnt/nfsMountPoint/datasets/gutenberg_data/data-23k.csv")
 
 # usr_title = sys.argv[1] # String input for title [DEPRECATED]
 # usr_author = sys.argv[2] # String input for author [DEPRECATED]
 attempts = 5
 for attempt in xrange(attempts):
-	try:
-		usr_title = raw_input("Enter Title: ")
-		usr_author = raw_input("Enter Author: ")
-		found = data[(data.book_name == usr_title) & (data.author == usr_author)]
-		found_book = found['ID']
-		id_target = found_book.tolist()[0]
-	except IndexError:
-		print "**** Title and/or Author Incorrect or Book is not in corpus****\nPlease try again"
-		# sys.exit(1)
-	else:
-		print "************** Searching for Book *******************"
-		break
+    try:
+        usr_title = raw_input("Enter Title: ")
+        usr_author = raw_input("Enter Author: ")
+        found = data[(data.book_name == usr_title) & (data.author == usr_author)]
+        found_book = found['ID']
+        id_target = found_book.tolist()[0]
+    except IndexError:
+        print "**** Title and/or Author Incorrect or Book is not in corpus****\nPlease try again"
+        # sys.exit(1)
+    else:
+        print "************** Searching for Book *******************"
+        break
 # Start timer
 start_time = time.time()
 
